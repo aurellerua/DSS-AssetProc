@@ -102,23 +102,23 @@ $result = $conn->query($query);
 				if($rown%2==0) {
 				echo "<tr>
 	              <td>{$row['id']}</td>
-	              <td>{$row['namavendor']}</td>
+	              <td>{$row['vendorname']}</td>
 	              <td>{$row['warranty']}</td>
 	              <td>{$row['spavailability']}</td>
 	              <td>{$row['specification']}</td>
-	              <td>{$row['harga']}</td>
-	              <td>{$row['kontak']}</td>
+	              <td>{$row['price']}</td>
+	              <td>{$row['contact']}</td>
 			      </tr>";
 		  		}
 		  		else {
 		  			echo "<tr class='alt'>
 	              <td>{$row['id']}</td>
-	              <td>{$row['namavendor']}</td>
+	              <td>{$row['vendorname']}</td>
 	              <td>{$row['warranty']}</td>
 	              <td>{$row['spavailability']}</td>
 	              <td>{$row['specification']}</td>
-	              <td>{$row['harga']}</td>
-	              <td>{$row['kontak']}</td>
+	              <td>{$row['price']}</td>
+	              <td>{$row['contact']}</td>
 			      </tr>";
 		  		}
 		  		$rown++;	
