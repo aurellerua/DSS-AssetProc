@@ -1,71 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-ul#menu {
-	padding: 0;
-}
-ul#menu li {
-	display: inline-block;
-}
-ul#menu li a {
-	display: inline-block;
-	background-color: #0A56A2;
-	color: white;
-	padding: 10px 70px;
-	text-decoration: none;
-	border-radius: 10px 10px 0 0;
-}
-ul#menu li a:hover {
-	background-color: orange;
-}
-h2 {
-	background-color: #ebe8e8;
-	font-size: 36pt;
-	text-align: center;
-}
-h1 {
-	background-color: #23b6eb;
-	font: arial;
-	font-size: 36pt;
-	color: #0e5d7a;
-	text-align: center;
-	text-decoration: bold;
-}
-table {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    width: 100%;
-    border-collapse: collapse;
-}
-td, th {
-	font-size: 1em;
-    border: 1px solid #98bf21;
-    padding: 3px 7px 2px 7px;
-}
-th {
-    font-size: 1.1em;
-    text-align: left;
-    padding-top: 5px;
-    padding-bottom: 4px;
-    background-color: #F8A12D;
-    color: #ffffff;
-}
-tr.alt td {
-	color: #000000;
-	background-color: #EAF2D3;
-}
-
-</style>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>IT Asset Procurement DSS</title>
 </head>
 <body>
+<p><a href="login.php">Logout</a></p>
 <h2>IT Asset Procurement DSS</h2>
 
 <ul id='menu'>
 	<li><a href="index.php">HOME</a></li>
-	<li><a href="keuangan.php">DATA KEUANGAN PERUSAHAAN</a></li>
-	<li><a href="vendor.php">INFORMASI VENDOR</a></li>
-	<li><a href="newreq.php">PERMINTAAN BARU</a></li>
+	<li><a href="keuangan.php">FINANCIAL DATA</a></li>
+	<li><a href="vendor.php">VENDOR INFORMATION</a></li>
+	<li><a href="newreq.php">NEW REQUEST</a></li>
 </ul>
+<h3>Vendor Information</h3>
 <h>
 <?php
 $server = "localhost";
@@ -91,7 +40,7 @@ $result = $conn->query($query);
 			<th>Sparepart Availability</th>
 			<th>Specification</th>
 			<th>Price</th>
-			<th>Kontak</th>
+			<th>Contact</th>
 		</tr>
 	</thead>
 
