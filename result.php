@@ -27,18 +27,18 @@ if ($conn->connect_error) {
 	die("Connection failed : " . $conn->connect_error);
 }
 $query = "SELECT * FROM infovendor";
-$minwarr ="SELECT MIN(warranty) FROM infovendor";
+$qminwarr ="SELECT MIN(warranty) FROM infovendor";
 $minAvail ="SELECT MIN(spavailability) FROM infovendor";
 $minspec ="SELECT MIN(Test) FROM infovendor";
 $result = $conn->query($query);
-
+$minwarrow = $conn ->query($qminwarr);
 
 	function intdiv_1($a, $b){
     
 	return ($a - $a % $b) / $b;
 	
 	}
-	echo "($minwarr)";
+	
 ?>
 
 
@@ -63,8 +63,8 @@ $result = $conn->query($query);
 			$quantity= 5;
 			$minamount = 0;
 			$altscore =0.00;
-			$minwarr = mysqli_fetch_assoc($minwarr);
-			echo "{$minwarr}";
+			$minwarr = mysqli_fetch_assoc($minwarrow);
+			echo $minwarr;
 			while ($row = mysqli_fetch_assoc($result)) {
 				$amount = intdiv_1($budget , $row['price']);
 				if($amount > $quantity){
