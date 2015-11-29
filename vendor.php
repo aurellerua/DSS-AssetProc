@@ -31,6 +31,8 @@ $query = "SELECT * FROM infovendor";
 $result = $conn->query($query);
 ?>
 
+<h4><a href="vendorbaru.php">New Vendor</a></h4>
+
 <table border="2" style="background-color: #84ed86; color: #761a9b; margin: 0 auto;">
 	<thead>
 		<tr>
