@@ -27,18 +27,20 @@ if ($conn->connect_error) {
 	die("Connection failed : " . $conn->connect_error);
 }
 $query = "SELECT * FROM infovendor";
-$minwarr ="SELECT MIN(warranty) FROM infovendor";
-$minAvail ="SELECT MIN(spavailability) FROM infovendor";
-$minspec ="SELECT MIN(Test) FROM infovendor";
+$qminwarr ="SELECT MIN(warranty) AS minwarranty FROM infovendor";
+$qminAvail ="SELECT MIN(spavailability) AS minspavail FROM infovendor";
+$qminspec ="SELECT MIN(Test) AS minspek FROM infovendor";
 $result = $conn->query($query);
-
+$minwarrow = $conn ->query($qminwarr);
+$minavailrow = $conn ->query($qminAvail);
+$minspecrow = $conn ->query($qminspec);
 
 	function intdiv_1($a, $b){
     
 	return ($a - $a % $b) / $b;
 	
 	}
-	echo "($minwarr)";
+	
 ?>
 
 
@@ -61,10 +63,14 @@ $result = $conn->query($query);
 			$rown=0;
 			$budget= 50000000;
 			$quantity= 5;
-			$minamount = 0;
+			$minamount = $quantity;
 			$altscore =0.00;
-			$minwarr = mysqli_fetch_assoc($minwarr);
-			echo "{$minwarr}";
+			$minwarr = mysqli_fetch_assoc($minwarrow);
+			$minavail = mysqli_fetch_assoc($minavailrow);
+			$minspec = mysqli_fetch_assoc($minspecrow);
+			$minwarResult = $minwarr['minwarranty'];
+			$minavailResult = $minavail['minspavail'];
+			$minspecResult = $minspec['minspek'];
 			while ($row = mysqli_fetch_assoc($result)) {
 				$amount = intdiv_1($budget , $row['price']);
 				if($amount > $quantity){
@@ -73,7 +79,13 @@ $result = $conn->query($query);
 				if($minamount > $amount){
 					$minamount = $amount;
 				}
-				$altscore= (($row['warranty']/$minwarr)* 0.2 );
+			}
+			while ($row = mysqli_fetch_assoc($result)) {
+				$amount = intdiv_1($budget , $row['price']);
+				if($amount > $quantity){
+					$amount = $quantity;
+				}
+				$altscore= (($row['warranty']/$minwarResult)*100 * 0.2) + (($row['spavailability']/$minavailResult)* 100 * 0.2) +(($row['Test']/$minspecResult)* 100 *0.35) + (($amount/$minamount) * 100 * 0.25);
 				if($rown%2==0) {
 				echo "<tr>
 	              <td>{$row['id']}</td>
