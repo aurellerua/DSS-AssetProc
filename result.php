@@ -71,21 +71,32 @@ $minspecrow = $conn ->query($qminspec);
 			$minwarResult = $minwarr['minwarranty'];
 			$minavailResult = $minavail['minspavail'];
 			$minspecResult = $minspec['minspek'];
-			while ($row = mysqli_fetch_assoc($result)) {
-				$amount = intdiv_1($budget , $row['price']);
+			$minamount =4;
+			$maxscore = 0;
+			$maxrow = 0;
+			/*while ($rowx = mysqli_fetch_assoc($result)) {
+				$amount = intdiv_1($budget , $rowx['price']);
 				if($amount > $quantity){
 					$amount = $quantity;
 				}
 				if($minamount > $amount){
 					$minamount = $amount;
 				}
+				$rown++;
 			}
+			$rown = 0;*/
 			while ($row = mysqli_fetch_assoc($result)) {
 				$amount = intdiv_1($budget , $row['price']);
 				if($amount > $quantity){
 					$amount = $quantity;
 				}
 				$altscore= (($row['warranty']/$minwarResult)*100 * 0.2) + (($row['spavailability']/$minavailResult)* 100 * 0.2) +(($row['Test']/$minspecResult)* 100 *0.35) + (($amount/$minamount) * 100 * 0.25);
+				if($altscore > $maxscore){
+					$maxscore = $altscore;
+					$maxrow = $rown + 1;
+					$vendorname = $row['vendorname'];
+					$lastamount = $amount;
+				}
 				if($rown%2==0) {
 				echo "<tr>
 	              <td>{$row['id']}</td>
@@ -122,7 +133,10 @@ $minspecrow = $conn ->query($qminspec);
 		?>
 	</tbody>
 </table>
+<?php 
 	
+	echo "Vendor terbaik untuk permintaan adalah $vendorname dengan jumlah $lastamount";
+?>	
 	
 <?php $conn->close(); ?>
 </h>
