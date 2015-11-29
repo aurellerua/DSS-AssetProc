@@ -3,7 +3,7 @@
 <head>
 	<title>IT Asset Procurement DSS</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
+</head>	
 <form id='login' action='index.php' method='post' accept-charset='UTF-8'>
 <fieldset>
 	<legend>Login</legend>

@@ -16,16 +16,9 @@
 </ul>
 <h3>Vendor Information</h3>
 <h>
-<?php
-$server = "localhost";
-$username = "root";
-$password = "";
-$database = "dbvendor";
 
-$conn = new mysqli($server,$username,$password,$database);
-if ($conn->connect_error) {
-	die("Connection failed : " . $conn->connect_error);
-}
+<?php
+include("database.php");
 
 $query = "SELECT * FROM infovendor";
 $result = $conn->query($query);

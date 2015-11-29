@@ -34,6 +34,7 @@ $result = $conn->query($query);
 <h4><a href="keuanganbaru.php">New Transaction</a></h4>
 
 <h5>Balance : </h5>
+<h5>
 <?php
 	$qDebit = "SELECT SUM(debit) AS sumDebit FROM keuangan";
 	$sumDebitRes = $conn->query($qDebit);
@@ -46,6 +47,7 @@ $result = $conn->query($query);
 
 	echo $sumDebit - $sumCredit;	
 ?>
+</h5>
 
 
 <table border="2" style="background-color: #84ed86; color: #761a9b; margin: 0 auto;">
