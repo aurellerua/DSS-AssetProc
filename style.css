@@ -28,6 +28,12 @@ body {
 
     margin: 25px 140px;
 }
+h6 {
+	text-align: left;
+	text-decoration: bold;
+	color: navy;
+	font-size: 30px;
+}
 h5 {
 	text-align: right;
 }

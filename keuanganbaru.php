@@ -1,5 +1,22 @@
 <!DOCTYPE html>
+<?php
+include("database.php");
+
+if (isset($_POST['Submit'])) {
+	
+		$description = $_POST['description'];
+		$debit = $_POST['debit'];
+		$credit = $_POST['credit'];
+
+		$query = "INSERT INTO keuangan (no, description, debit, credit) VALUES ('','$description','$debit','$credit')";
+		$result = $conn->query($query);
+
+		header("Location: keuangan.php");
+}
+?>
+
 <html>
+
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>IT Asset Procurement DSS</title>
@@ -14,7 +31,7 @@
 		<li><a href="vendor.php">VENDOR INFORMATION</a></li>
 		<li><a href="newreq.php">NEW REQUEST</a></li>
 	</ul>
-	<h3>New Transaction</h3>
+	<h6>New Transaction</h6>
 
 	<form id='keuanganbaru' action='keuanganbaru.php' method='post'>
 		<label for='description'>Description :</label>
@@ -29,17 +46,5 @@
 		<input type='submit' name='Submit' value='Submit'>
 	</form>
 
-
-<?php
-include("database.php");
-
-$description = $_POST['description'];
-$debit = $_POST['debit'];
-$credit = $_POST['credit'];
-
-$query = "INSERT INTO keuangan (no, description, debit, credit) VALUES ('',$description,$debit,$credit)";
-$result = $conn->query($query);
-
-?>
 </body>
 </html>
