@@ -18,12 +18,12 @@
 	</ul>
 	<h6>New Request</h6>
 
-	<form id='newreq' action='newreq.php' method='post'>
-		<label for='specification'>Specification :</label>
-		<input type='text' name='specification' id='specification' maxlength='1000' />
+	<form id='newreq' action='result.php' method='post'>
+		<label for='specification'>Specification :</label><br>
+		<textarea id='specification' rows='10' cols='70'></textarea><br>
 
-		<label for='quantity'>Quantity :</label>
-		<input type='number' name='quantity' id='quantity' />
+		<label for='quantity'>Quantity : </label><br>
+		<input type='number' name='quantity' id='quantity' /><br><br>
 
 		<input type='submit' name='Submit' value='Submit'>
 	</form>
